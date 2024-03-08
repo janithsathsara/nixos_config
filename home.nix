@@ -8,7 +8,7 @@
   ...
 }: let
   unstable-packages = with pkgs.unstable; [
-    # FIXME: select your core binaries that you always want on the bleeding-edge
+    # NOTE: Add latest packages
     bat
     bottom
     coreutils
@@ -22,7 +22,6 @@
     htop
     jq
     killall
-    lunarvim
     mosh
     neovim
     procs
@@ -31,21 +30,25 @@
     tmux
     tree
     unzip
-    vim
     wget
     zip
   ];
 
   stable-packages = with pkgs; [
-    # FIXME: customize these stable packages to your liking for the languages that you use
+    # NOTE: add packages
 
     # key tools
-    gh # for bootstrapping
+    gh
     just
+    lazygit
+    neofetch
+    oh-my-zsh
+    tldr
 
     # core languages
+    gcc
     rustup
-    go
+    # go
     lua
     nodejs
     python3
@@ -97,8 +100,7 @@ in {
     username = "${username}";
     homeDirectory = "/home/${username}";
 
-    sessionVariables.EDITOR = "lvim";
-    # FIXME: set your preferred $SHELL
+    sessionVariables.EDITOR = "nvim";
     sessionVariables.SHELL = "/etc/profiles/per-user/${username}/bin/zsh";
   };
 
@@ -122,7 +124,7 @@ in {
     nix-index-database.comma.enable = true;
 
     # FIXME: disable this if you don't want to use the starship prompt
-    starship.enable = true;
+    starship.enable = false;
     starship.settings = {
       aws.disabled = true;
       gcloud.disabled = true;
@@ -151,6 +153,7 @@ in {
     direnv.enableZshIntegration = true;
     direnv.nix-direnv.enable = true;
 
+
     git = {
       enable = true;
       package = pkgs.unstable.git;
@@ -160,10 +163,10 @@ in {
         side-by-side = true;
         navigate = true;
       };
-      userEmail = ""; # FIXME: set your git email
-      userName = ""; #FIXME: set your git username
+      userEmail = "sathsarah@gmail.com"; 
+      userName = "janithsathsara"; 
       extraConfig = {
-        # FIXME: uncomment the next lines if you want to be able to clone private https repos
+        # note: uncomment the next lines if you want to be able to clone private https repos
         # url = {
         #   "https://oauth2:${secrets.github_token}@github.com" = {
         #     insteadOf = "https://github.com";
@@ -185,13 +188,23 @@ in {
       };
     };
 
-    # FIXME: This is my .zshrc - you can fiddle with it if you want
+    # NOTE: This is the .zshrc  
     zsh = {
       enable = true;
+      oh-my-zsh = {
+          enable = true;
+          theme = "robbyrussell";
+          plugins = [
+            "sudo"
+            "terraform"
+            "systemadmin"
+            "vi-mode"
+          ];
+        };
       autocd = true;
       enableAutosuggestions = true;
       enableCompletion = true;
-      defaultKeymap = "emacs";
+      defaultKeymap = "vicmd";
       history.size = 10000;
       history.save = 10000;
       history.expireDuplicatesFirst = true;
@@ -224,7 +237,7 @@ in {
         refresh = "source ${config.home.homeDirectory}/.zshrc";
         show_path = "echo $PATH | tr ':' '\n'";
 
-        # FIXME: add more git aliases here if you want them
+        # NOTE: add more git aliases here if you want them
         gapa = "git add --patch";
         grpa = "git reset --patch";
         gst = "git status";
@@ -239,6 +252,14 @@ in {
         pbcopy = "/mnt/c/Windows/System32/clip.exe";
         pbpaste = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -command 'Get-Clipboard'";
         explorer = "/mnt/c/Windows/explorer.exe";
+        vim="nvim";
+        vi="nvim";
+        TRust="~/bash_scripts/tmux-rust.sh";
+				TReact="~/bash_scripts/tmux-react.sh";
+				TCss="~/bash_scripts/tmux-css.sh";
+				TPhp="~/bash_scripts/tmux-php.sh";
+				Nconf="cd ~/.config/nvim/lua/user/ && vi";
+				tat="tmux attach -t";
       };
 
       envExtra = ''
