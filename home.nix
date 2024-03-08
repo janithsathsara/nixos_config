@@ -195,10 +195,10 @@ in {
           enable = true;
           theme = "robbyrussell";
           plugins = [
-            "sudo"
-            "terraform"
-            "systemadmin"
-            "vi-mode"
+            # "sudo"
+            # "terraform"
+            # "systemadmin"
+            # "vi-mode"
           ];
         };
       autocd = true;
@@ -254,12 +254,13 @@ in {
         explorer = "/mnt/c/Windows/explorer.exe";
         vim="nvim";
         vi="nvim";
-        TRust="~/bash_scripts/tmux-rust.sh";
-				TReact="~/bash_scripts/tmux-react.sh";
-				TCss="~/bash_scripts/tmux-css.sh";
-				TPhp="~/bash_scripts/tmux-php.sh";
+        TRust="~/Bash_tmux_scripts/tmux-rust.sh";
+				TReact="~/Bash_tmux_scripts/tmux-react.sh";
+				TCss="~/Bash_tmux_scripts/tmux-css.sh";
+				TPhp="~/Bash_tmux_scripts/tmux-php.sh";
 				Nconf="cd ~/.config/nvim/lua/user/ && vi";
 				tat="tmux attach -t";
+				nos="sudo nixos-rebuild switch --flake ~/configuration";
       };
 
       envExtra = ''
