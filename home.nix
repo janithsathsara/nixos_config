@@ -108,7 +108,7 @@ in {
     stable-packages
     ++ unstable-packages
     ++
-    # FIXME: you can add anything else that doesn't fit into the above two lists in here
+    # NOTE: you can add anything else that doesn't fit into the above two lists in here
     [
       # pkgs.some-package
       # pkgs.unstable.some-other-package
@@ -204,7 +204,7 @@ in {
       autocd = true;
       enableAutosuggestions = true;
       enableCompletion = true;
-      defaultKeymap = "vicmd";
+      defaultKeymap = "emacs";
       history.size = 10000;
       history.save = 10000;
       history.expireDuplicatesFirst = true;
