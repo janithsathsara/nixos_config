@@ -45,14 +45,16 @@
     oh-my-zsh
     tldr
 
+
     # core languages
     gcc
     rustup
     # go
     lua
-    nodejs
+    nodejs_20
     python3
     typescript
+    yarn
 
     # rust stuff
     cargo-cache
@@ -260,11 +262,15 @@ in {
 				TPhp="~/Bash_tmux_scripts/tmux-php.sh";
 				Nconf="cd ~/.config/nvim/lua/user/ && vi";
 				tat="tmux attach -t";
+				kat="tmux kill-session -t";
+				kal="tmux kill-session -a";
 				nos="sudo nixos-rebuild switch --flake ~/configuration";
       };
 
       envExtra = ''
         export PATH=$PATH:$HOME/.local/bin
+        export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+        export LIBGL_ALWAYS_INDIRECT=true
       '';
 
       initExtra = ''
