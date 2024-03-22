@@ -19,7 +19,6 @@
     fx
     git
     git-crypt
-    htop
     jq
     killall
     mosh
@@ -38,6 +37,7 @@
     # NOTE: add packages
 
     # key tools
+    btop
     gh
     just
     lazygit
@@ -254,6 +254,8 @@ in {
         pbcopy = "/mnt/c/Windows/System32/clip.exe";
         pbpaste = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -command 'Get-Clipboard'";
         explorer = "/mnt/c/Windows/explorer.exe";
+
+        #NOTE: my aliases
         vim="nvim";
         vi="nvim";
         TRust="~/Bash_tmux_scripts/tmux-rust.sh";
@@ -265,6 +267,7 @@ in {
 				kat="tmux kill-session -t";
 				kal="tmux kill-session -a";
 				nos="sudo nixos-rebuild switch --flake ~/configuration";
+				cat="bat";
       };
 
       envExtra = ''
