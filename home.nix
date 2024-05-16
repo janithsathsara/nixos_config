@@ -49,7 +49,6 @@
     # core languages
     gcc
     rustup
-    # go
     lua
     nodejs_20
     python3
@@ -115,10 +114,7 @@ in {
       # pkgs.some-package
       # pkgs.unstable.some-other-package
     ];
-
-  # FIXME: if you want to version your LunarVim config, add it to the root of this repo and uncomment the next line
-  # home.file.".config/lvim/config.lua".source = ./lvim_config.lua;
-
+    
   programs = {
     home-manager.enable = true;
     nix-index.enable = true;
