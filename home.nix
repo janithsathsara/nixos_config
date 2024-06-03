@@ -31,6 +31,7 @@
     unzip
     wget
     zip
+    stylua
   ];
 
   stable-packages = with pkgs; [
@@ -50,7 +51,7 @@
     gcc
     rustup
     lua
-    nodejs_20
+    nodejs_22
     python3
     typescript
     yarn
@@ -66,29 +67,8 @@
     # treesitter
     tree-sitter
 
-    # language servers
-    ccls # c / c++
-    gopls
-    nodePackages.typescript-language-server
-    pkgs.nodePackages.vscode-langservers-extracted # html, css, json, eslint
-    nodePackages.yaml-language-server
-    sumneko-lua-language-server
-    nil # nix
-    nodePackages.pyright
+    # sumneko-lua-language-server
 
-    # formatters and linters
-    alejandra # nix
-    black # python
-    ruff # python
-    deadnix # nix
-    golangci-lint
-    lua52Packages.luacheck
-    nodePackages.prettier
-    shellcheck
-    shfmt
-    statix # nix
-    sqlfluff
-    tflint
   ];
 in {
   imports = [
@@ -121,7 +101,6 @@ in {
     nix-index.enableZshIntegration = true;
     nix-index-database.comma.enable = true;
 
-    # FIXME: disable this if you don't want to use the starship prompt
     starship.enable = false;
     starship.settings = {
       aws.disabled = true;
@@ -137,7 +116,6 @@ in {
       hostname.style = "bold green";
     };
 
-    # FIXME: disable whatever you don't want
     fzf.enable = true;
     fzf.enableZshIntegration = true;
     lsd.enable = true;
@@ -151,6 +129,13 @@ in {
     direnv.enableZshIntegration = true;
     direnv.nix-direnv.enable = true;
 
+    # neovim = {
+    #   enable = true;
+    #   package = pkgs.unstable.neovim;
+    #   extraPackages = with pkgs; [
+    #     stylua
+    #   ];
+    # };
 
     git = {
       enable = true;
@@ -200,7 +185,7 @@ in {
           ];
         };
       autocd = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       defaultKeymap = "emacs";
       history.size = 10000;
@@ -264,6 +249,7 @@ in {
 				kal="tmux kill-session -a";
 				nos="sudo nixos-rebuild switch --flake ~/configuration";
 				cat="bat";
+				clean="sudo nix-collect-garbage -d";
       };
 
       envExtra = ''
